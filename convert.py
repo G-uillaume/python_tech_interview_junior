@@ -8,7 +8,7 @@ def csv_to_html():
     csv_data = sorted(csv_data, key=lambda row: row['country'], reverse=True)
     i = 0
     y = 1
-    url = '/Users/guillaumevanleynseele/repos/python_tech_interview_junior/ip_data'+str(y)+'.html'
+    url = '/Users/guillaumevanleynseele/repos/python_tech_interview_junior/ip_datas/ip_data'+str(y)+'.html'
     html =  open (url, 'w+')
     start_table = '<table><thead><tr><th>id</th><th>ip</th><th>country</th><th>date</th></thead><tbody>'
     html.write('<a href="ip_data'+str(y+1)+'.html">Next</a>')
@@ -24,7 +24,7 @@ def csv_to_html():
         html.write(end_table)
         html.close()
         y += 1
-        url = '/Users/guillaumevanleynseele/repos/python_tech_interview_junior/ip_data'+str(y)+'.html'
+        url = '/Users/guillaumevanleynseele/repos/python_tech_interview_junior/ip_datas/ip_data'+str(y)+'.html'
         html = open(url, 'w+')
         if y == 10:
           html.write('<a href="ip_data'+str(y-1)+'.html">Previous</a>')
