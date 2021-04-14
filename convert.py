@@ -10,15 +10,15 @@ def csv_to_html():
     y = 1
     url = '/Users/guillaumevanleynseele/repos/python_tech_interview_junior/ip_datas/ip_data'+str(y)+'.html'
     html =  open (url, 'w+')
-    start_table = '<table><thead><tr><th>id</th><th>ip</th><th>country</th><th>date</th></thead><tbody>'
-    html.write('<a href="ip_data'+str(y+1)+'.html">Next</a>')
+    start_table = '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta http-equiv="X-UA-Compatible" content="IE=edge">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<title>IP DATAS</title>\n<link rel="stylesheet" href="../style.css">\n</head>\n<body>\n<table>\n<thead>\n<tr>\n<th>id</th>\n<th>ip</th>\n<th>country</th>\n<th>date</th>\n</thead>\n<tbody>\n'
+    html.write('<div class="links">\n<a href="ip_data'+str(y+1)+'.html">Next</a>\n</div>')
     html.write(start_table)
-    end_table = '</tbody></table>'
+    end_table = '</tbody>\n</table>\n</body>\n</html>\n'
     for row in range(len(csv_data)):
-      html.write('<tr>')  
+      html.write('<tr>\n')  
       for value in csv_data[row].values():
-        html.write('<td>'+value+'</td>')
-      html.write('</tr>')
+        html.write('<td>'+value+'</td>\n')
+      html.write('</tr>\n')
       i += 1
       if i % 100 == 0 and i != 0 and i < 1000:
         html.write(end_table)
@@ -27,10 +27,10 @@ def csv_to_html():
         url = '/Users/guillaumevanleynseele/repos/python_tech_interview_junior/ip_datas/ip_data'+str(y)+'.html'
         html = open(url, 'w+')
         if y == 10:
-          html.write('<a href="ip_data'+str(y-1)+'.html">Previous</a>')
+          html.write('<div class="links">\n<a href="ip_data'+str(y-1)+'.html">Previous</a>\n</div>\n')
         if 1 < y < 10:
-          html.write('<a href="ip_data'+str(y-1)+'.html">Previous</a>')
-          html.write('<a href="ip_data'+str(y+1)+'.html">Next</a>')
+          html.write('<div class="links">\n<a href="ip_data'+str(y-1)+'.html">Previous</a>\n')
+          html.write('<a href="ip_data'+str(y+1)+'.html">Next</a>\n</div>\n')
         html.write(start_table)
   
 
